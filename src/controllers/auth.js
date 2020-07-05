@@ -1,6 +1,7 @@
 const express = require("express")
 const bcrypt = require("bcrypt")
 const { Account } = require("../models")
+const { accountSignUp } = require("../validators/account")
 
 const router = express.Router()
 
@@ -10,7 +11,7 @@ router.get("/sign-in", (req, res) => {
   return res.json("sign-in")
 })
 
-router.post("/sign-up", async (req, res) => {
+router.post("/sign-up", accountSignUp, async (req, res) => {
   const { email, password } = req.body
 
   const account = await Account.findOne({ where: { email } })
