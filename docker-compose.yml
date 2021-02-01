@@ -13,8 +13,11 @@ services:
         window: 120s
 
   mysql:
-    image: mysql
+    image: mysql:5.7
     environment:
+      - MYSQL_DATABASE=LINKS_BACKEND
+      - MYSQL_USER=mysql
+      - MYSQL_PASSWORD=mysql@102030
       - MYSQL_ROOT_PASSWORD=mysql@102030
     volumes:
       - mysql:/var/lib/mysql
